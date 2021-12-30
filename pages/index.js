@@ -1,5 +1,7 @@
-import styles from '../styles/styles.module.scss'
+import styles from '../styles/Home.module.scss'
+
 import Contador from '../components/Contador'; 
+import Parallax from '../components/Parallax'
 /* function Contador(){
     return
 } */
@@ -8,9 +10,12 @@ import Contador from '../components/Contador';
  function Home() {
 
     return (
+        <>
+            <Parallax />
         <div className={styles.container}>
-            <Contador/>
+            <Contador />
         </div>
+        </>
     )
  }
 
