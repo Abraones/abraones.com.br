@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: abraones.com.br
+Token: 224b94469c68d622eac213ee2e3de62f9efb7870edc6dc80ff2555ae9cd316aa
