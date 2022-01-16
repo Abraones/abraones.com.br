@@ -1,5 +1,4 @@
 export default function Trades({saldo, trades, price}){
-
     return(
         <div>
             <h1>Aqui aparecerão meus ativos</h1>
@@ -7,9 +6,7 @@ export default function Trades({saldo, trades, price}){
                  <p key={index}>{a.asset} : {a.free}</p>
             ))}
             <h2>Aqui os Trades de BTC</h2>
-            {//console.log(trades.btc)
-
-            trades.btc.map((a)=>(
+            {trades.btc.map((a)=>(
                 <p key={a.id}>
                     Quando: {a.time}
                     Preço: {a.price}
@@ -17,21 +14,16 @@ export default function Trades({saldo, trades, price}){
                     Preço Atual: {price.btc.price}
                     Retorno : {(price.btc.price - a.price)*100/price.btc.price}
                 </p>
-            ))
-            
-            }
-
+            ))}
         </div>
     )
 }
-
 export const getStaticProps = async () => {
     //Conecta com a Binance
     const { Spot } = require('@binance/connector');
     const apiKey = process.env.API_KEY;
     const apiSecret = process.env.SECRET_KEY;
     const client = new Spot(apiKey, apiSecret);
-
     // Chama os dados do Metódo account
     const response = await client.account();
     // Captura todos as cryptos da conta
@@ -39,13 +31,9 @@ export const getStaticProps = async () => {
     // Captura Trades de BTC com BUSD
     const resBTC = await client.myTrades('BTCBUSD')
     const tradesBTC = await resBTC.data
-
     //Puxar preço
     const resPriceBTC = await client.tickerPrice('BTCBUSD')
     const priceBTC = await resPriceBTC.data
-
-    console.log(priceBTC)
-
     function comSaldo(props){
         let comSaldo = [];
         props.map((props)=>{
@@ -59,12 +47,8 @@ export const getStaticProps = async () => {
     return{
         props:{
             saldo, 
-            trades:{
-                btc: tradesBTC
-            },
-            price:{
-                btc: priceBTC
-            }
+            trades:{btc: tradesBTC},
+            price:{btc: priceBTC}
         }
     }
 }
