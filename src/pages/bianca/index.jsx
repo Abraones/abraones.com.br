@@ -1,37 +1,24 @@
-export default function Trades({data}){
-    //console.log(data)
-    const ativos = data.balances;
-    
-    const exAtivos = [
-        {asset: 'BTC', free: 0.00100000 ,locked: 0.00000000},
-        {asset: 'BUSD', free: 40.00000000 ,locked: 0.00000000},
-        {asset: 'ETH', free: 0.00400000 ,locked: 0.00000000},
-        {asset: 'LTC', free: 0.00000000 ,locked: 0.00000000}
-    ]
-    function ativosMaior(props){
-        var comSaldo = [];
-        props.map((props)=>{
-            if(props.free > 0){
-                comSaldo.push(props)
-                
-            }
-        })
-        return comSaldo
-    }
+export default function Trades({saldo, trades}){
 
     return(
         <div>
             <h1>Aqui aparecerão meus ativos</h1>
-
-            {ativosMaior(ativos).map((ativo) =>(
-                <p>{ativo.asset} : {ativo.free}</p>
+            {saldo.map((a, index)=>(
+                 <p key={index}>{a.asset} : {a.free}</p>
             ))}
+            <h2>Aqui os Trades de BTC</h2>
+            {//console.log(trades.btc)
 
-           {/*  {exAtivos.map((ativo) =>(
-                <p>{ativo.asset} : {ativo.free}</p>
-            ))} */}
-            {/* {console.log(ativosMaior(exAtivos))} */}
-            <h2></h2>
+            trades.btc.map((a)=>(
+                <p key={a.id}>
+                    Quando: {a.time}
+                    Preço: {a.price}
+                    Quantidade: {a.quoteQty}
+                </p>
+            ))
+            
+            }
+
         </div>
     )
 }
@@ -43,13 +30,32 @@ export const getStaticProps = async () => {
     const apiSecret = process.env.SECRET_KEY;
     const client = new Spot(apiKey, apiSecret);
 
-    // Chama os dados do Metódo acconunt
+    // Chama os dados do Metódo account
     const response = await client.account();
-    const data = await response.data
+    // Captura todos as cryptos da conta
+    const allCoins = await response.data.balances
+    // Captura Trades de BTC com BUSD
+    const resBTC = await client.myTrades('BTCBUSD')
+    const tradesBTC = await resBTC.data
 
+    console.log(tradesBTC)
+
+    function comSaldo(props){
+        let comSaldo = [];
+        props.map((props)=>{
+            if(props.free > 0){
+                comSaldo.push(props)
+            }
+        })
+        return comSaldo
+    }
+    const saldo = comSaldo(allCoins)
     return{
         props:{
-            data
+            saldo, 
+            trades:{
+                btc: tradesBTC
+            }
         }
     }
 }
