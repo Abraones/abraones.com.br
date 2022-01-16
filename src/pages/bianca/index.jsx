@@ -1,4 +1,4 @@
-export default function Trades({saldo, trades}){
+export default function Trades({saldo, trades, price}){
 
     return(
         <div>
@@ -14,6 +14,8 @@ export default function Trades({saldo, trades}){
                     Quando: {a.time}
                     Preço: {a.price}
                     Quantidade: {a.quoteQty}
+                    Preço Atual: {price.btc.price}
+                    Retorno : {(price.btc.price - a.price)*100/price.btc.price}
                 </p>
             ))
             
@@ -38,7 +40,11 @@ export const getStaticProps = async () => {
     const resBTC = await client.myTrades('BTCBUSD')
     const tradesBTC = await resBTC.data
 
-    console.log(tradesBTC)
+    //Puxar preço
+    const resPriceBTC = await client.tickerPrice('BTCBUSD')
+    const priceBTC = await resPriceBTC.data
+
+    console.log(priceBTC)
 
     function comSaldo(props){
         let comSaldo = [];
@@ -55,6 +61,9 @@ export const getStaticProps = async () => {
             saldo, 
             trades:{
                 btc: tradesBTC
+            },
+            price:{
+                btc: priceBTC
             }
         }
     }
