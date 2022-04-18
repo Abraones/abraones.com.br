@@ -12,9 +12,6 @@ function Parallax(props){
                 <h2>Aqui se encontram minhas experiências.</h2>
                
             </div>
-            <div>
-
-            </div>
         </section>
     )
 }
