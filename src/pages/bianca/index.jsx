@@ -1,28 +1,59 @@
+import styles from '../../styles/Bianca.module.scss'
+
 export default function Trades({saldo, trades, price}){
+
+    //console.log(saldo)
+    //console.log(trades)
+    //console.log(price)
+    //const tempo = 1635080094978
+    //const date = new Date(tempo)
+    //console.log(date.toDateString())
+    
+
+
     return(
         <div>
-            <h1>Aqui aparecerão meus ativos</h1>
-            {saldo.map((a, index)=>(
-                 <p key={index}>{a.asset} : {a.free}</p>
-            ))}
-            <h2>Aqui os Trades de BTC</h2>
-            {trades.btc.map((a)=>(
-                <p key={a.id}>
-                    Quando: {a.time}
-                    Preço: {a.price}
-                    Quantidade: {a.quoteQty}
-                    Preço Atual: {price.btc.price}
-                    Retorno : {(price.btc.price - a.price)*100/price.btc.price}
-                </p>
-            ))}
+            <div className={styles.info}>
+                <h1>Bianca</h1>
+                <p>Seja bem vindo a Bianca, minha página de consumo da API da Binance. </p>
+                <p>Tá feio, mas funciona</p>
+                <p>Documentação: <a href="https://binance.github.io/binance-connector-node/index.html" >Connector Binance Node</a></p>
+
+            </div>
+            {/* <div className={styles.caixa}></div> */}
+
+            <div className={styles.carteira}>
+                <h2>Aqui aparecerão meus ativos</h2>
+                <div className={styles.ativos}>
+                    {saldo.map((a, index)=>(
+                        <p key={index}>{a.asset} : {a.free}</p>
+                    ))}
+                </div>
+            </div>
+            <div className={styles.tradesBTC}>
+                <h2>Aqui os Trades de BTC</h2>
+                <div className='boxTrades'>
+                    {trades.btc.map((a)=>(
+                        <div className={styles.tradeItem} key={a.id}>
+                            
+                            <p className={styles.pText}>Quando: {a.time} </p>
+                            <p className={styles.pText}>Preço: {a.price}</p>
+                            <p className={styles.pText}>Quantidade: {a.quoteQty}</p>
+                            <p className={styles.pText}>Preço Atual: {price.btc.price}</p>
+                            <p className={styles.pText}>Retorno : {(price.btc.price - a.price)*100/price.btc.price}</p>
+                        </div>
+                        
+                    ))}
+                </div>
+            </div>
         </div>
     )
 }
 export const getStaticProps = async () => {
     //Conecta com a Binance
     const { Spot } = require('@binance/connector');
-    const apiKey = process.env.API_KEY;
-    const apiSecret = process.env.SECRET_KEY;
+    const apiKey = process.env.BIANCA_API_KEY;
+    const apiSecret = process.env.BIANCA_SECRET_KEY;
     const client = new Spot(apiKey, apiSecret);
     // Chama os dados do Metódo account
     const response = await client.account();
@@ -34,6 +65,9 @@ export const getStaticProps = async () => {
     //Puxar preço
     const resPriceBTC = await client.tickerPrice('BTCBUSD')
     const priceBTC = await resPriceBTC.data
+
+    
+
     function comSaldo(props){
         let comSaldo = [];
         props.map((props)=>{
