@@ -9,12 +9,14 @@ import Parallax from '../components/Parallax'
  function Home() {
 
     return (
-        <>
+        <div>
             <Parallax />
-        <div className={styles.container}>
-            <Contador />
+
+            <div className={styles.container}>
+                <Contador />
+            </div>
+
         </div>
-        </>
     )
  }
 
