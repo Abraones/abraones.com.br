@@ -13,7 +13,6 @@ import Parallax from '../components/Parallax'
             <Parallax />
         <div className={styles.container}>
             <Contador />
-            
         </div>
         </>
     )
