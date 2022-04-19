@@ -11,10 +11,9 @@ import Parallax from '../components/Parallax'
     return (
         <>
             <Parallax />
-        <div className={styles.container}>
-            <Contador />
-            
-        </div>
+            <div className={styles.container}>
+                <Contador />
+            </div>
         </>
     )
  }
