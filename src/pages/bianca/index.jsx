@@ -49,7 +49,7 @@ export default function Trades({saldo, trades, price}){
         </div>
     )
 }
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     //Conecta com a Binance
     const { Spot } = require('@binance/connector');
     const apiKey = process.env.BIANCA_API_KEY;
