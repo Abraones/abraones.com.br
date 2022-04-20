@@ -1,0 +1,63 @@
+
+/* @media screen and (max-width: 400px) {
+    .caixa {
+        width: 80vw;
+        
+    }
+  }  */
+/*  @media screen and (min-width: 650px) {
+    .caixa {
+        width: min(90vw, 650px);
+        
+    }
+    
+  }  
+ */
+.carteira{
+   
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.ativos{
+    width: min(90vw, 650px);
+    display: flex;
+    align-items: center;
+    flex-direction: column;  
+    p{
+        margin: 5px 2px 3px 2px  ;
+    }
+}
+.tradesBTC{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.boxTrades{
+    display: flex;
+    flex-direction: column;   
+}
+.tradeItem {
+    p{
+        margin: 5px 2px 3px 2px  ;
+    }
+    width: min(90vw, 650px);
+    margin: 15px;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row;
+    border-style: solid;
+    border-width: 1px;
+    
+}
+.caixa{
+    
+    height: 5px;
+    border-style: solid;
+    border-width: 1px;
+}
+
