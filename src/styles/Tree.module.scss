@@ -18,7 +18,7 @@
     align-items: center;
     justify-content: center;
     
-    background-color: rgb(141, 87, 87);
+    /* background-color: #34435E; */
     
     font-size: 50px;
     font-family: 'Anonymous Pro';
@@ -44,7 +44,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: antiquewhite;
+    background-color: #34435E;
     
 
 }
@@ -67,11 +67,21 @@
 }
 .iconPerfil{
     width: 150px;
-    margin: 75px 20px 20px 20px ;
-
+    margin: 75px 20px 20px 20px ;    
+    p{  
+        
+        width: max-content;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 10px 0 10px 0;
+        color: #E6E6E6;
+    }
 }
 .logo{
     border-radius: 100px;
+    border-width: 1px;
+    border-color: #E6E6E6;
+    border-style: solid;
 }
 .buttonTree{
     display: flex;
@@ -82,14 +92,17 @@
     height: 70px;
 
     border-radius: 7px;
+    border-width: 1px 0 0 1px;
+    border-style: solid;
+
     margin: 15px 0px 15px 0px;
-    background-color: rgb(28, 25, 69);   
+    background-color: #2B384F;   
     font-family: Arial, Helvetica, sans-serif;
     p{
         margin: 0;
     }
     
-    color: white;
+    color: #E6E6E6;
     text-align: center;
     
  }

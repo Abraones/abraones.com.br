@@ -19,6 +19,7 @@ export default function Tree(props){
                     <div className={styles.cellPhone}>
                         <div className={styles.iconPerfil}>
                         <Image className={styles.logo} alt="Vercel logo" src={imgPerfil} width={1000} height={1000} />
+                        <p>Abraão Lincon</p>
                         </div>
                         <div className={styles.buttonTree}>
                             <p>Sobre mim</p>
