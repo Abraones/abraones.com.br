@@ -1,18 +1,12 @@
-import styles from '../../styles/Tree.module.scss'
+import styles from '../styles/Tree.module.scss'
 import React from 'react'
 import Image from 'next/image'
-import imgPerfil from "../../public/img/abraones.jpg"
+import imgPerfil from "../public/img/abraones.jpg"
 
 export default function Tree(props){
 
-    /* <div className={styles.hello}>
-    <h1>Abraones</h1>
-    <p>Olá, eu sou Abraão Lincon e seja bem vindo ao meu site</p>
-</div> */
-
-
+ 
     return (
-        <div className={styles.container}>
             <header className={styles.header}>
                 
                 <div className={styles.linkTree}>
@@ -41,6 +35,5 @@ export default function Tree(props){
                 </div>
 
             </header>
-        </div>
     )
 }
