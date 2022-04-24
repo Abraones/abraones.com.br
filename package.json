@@ -3,6 +3,7 @@
     "@binance/connector": "^1.8.1",
     "axios": "^0.24.0",
     "dotenv": "^12.0.3",
+    "etag": "^1.8.1",
     "next": "^12.0.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
