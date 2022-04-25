@@ -25,7 +25,7 @@ export default function Tree(props){
                                 <p>Instagram</p>
                             </div>
                         </a>
-                        <a href="./bianca">
+                        <a href="./dev">
                             <div className={styles.buttonTree}>
                                 <p>Desafio Dev</p>
                             </div>
