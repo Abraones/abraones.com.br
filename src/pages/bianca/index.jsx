@@ -12,15 +12,14 @@ export default function Trades({saldo, trades, price}){
 
 
     return(
-        <div>
+        <div className={styles.container}>
             <div className={styles.info}>
-                <h1>Bianca</h1>
+                <a href='/'> <h1>Bianca</h1> </a> 
                 <p>Seja bem vindo a Bianca, minha página de consumo da API da Binance. </p>
                 <p>Tá feio, mas funciona</p>
                 <p>Documentação: <a href="https://binance.github.io/binance-connector-node/index.html" >Connector Binance Node</a></p>
 
             </div>
-            {/* <div className={styles.caixa}></div> */}
 
             <div className={styles.carteira}>
                 <h2>Aqui aparecerão meus ativos</h2>

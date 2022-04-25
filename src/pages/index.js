@@ -1,6 +1,7 @@
 import styles from '../styles/Home.module.scss'
 import Contador from '../components/Contador'; 
-import Parallax from '../components/Parallax'
+import Parallax from '../components/Parallax';
+import Tree from '../components/Tree'
 /* function Contador(){
     return
 } */
@@ -8,10 +9,10 @@ import Parallax from '../components/Parallax'
 
  function Home() {
 
+    // <Parallax />
     return (
         <div>
-            <Parallax />
-
+            <Tree/>
             <div className={styles.container}>
                 <Contador />
             </div>
