@@ -15,19 +15,19 @@ export default function Tree(props){
                         <Image className={styles.logo} alt="Vercel logo" src={imgPerfil} width={1000} height={1000} />
                         <p>Abraão Lincon</p>
                         </div>
-                        <a href="">
+                        <a href="/sobre">
                             <div className={styles.buttonTree}>
                                 <p>Sobre mim</p>
-                            </div>
-                        </a>
-                        <a href="https://www.instagram.com/abraones_/">
-                            <div className={styles.buttonTree}>
-                                <p>Instagram</p>
                             </div>
                         </a>
                         <a href="./dev">
                             <div className={styles.buttonTree}>
                                 <p>Desafio Dev</p>
+                            </div>
+                        </a>
+                        <a href="https://www.instagram.com/abraones_/">
+                            <div className={styles.buttonTree}>
+                                <p>Instagram</p>
                             </div>
                         </a>
                         <div className={styles.swipe}></div>
