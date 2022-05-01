@@ -1,18 +1,51 @@
+import Head from 'next/head'
 import styles from '../../styles/Bianca.module.scss'
 
 export default function Trades({saldo, trades, price}){
 
-    //console.log(saldo)
+    console.log(saldo)
     //console.log(trades)
-    //console.log(price)
-    //const tempo = 1635080094978
-    //const date = new Date(tempo)
-    //console.log(date.toDateString())
+    //console.log(price.btc.price)
+ 
+    let novoTrade = [ ]
     
+    function formactTrades(props){
+        const trans = props.btc
 
+        trans.map((a, index, arrayBase)=>{
+
+            // Formata a Data
+            const date = a.time
+            const timeFormact = new Date(date)
+            let ddmmyyy = ((timeFormact.getDate() )) + "/" + ((timeFormact.getMonth() + 1)) + "/" + timeFormact.getFullYear(); 
+
+            //Arredonda valores
+            const qnt = parseFloat(a.quoteQty)
+            const paid = parseFloat(a.price)
+            const arredondaQnt = qnt.toFixed(2)
+
+            //Calcula Retorno
+            const retorno = ((price.btc.price - a.price)*100/price.btc.price)
+            const arredondaRetorno = retorno.toFixed(2)
+
+            if (a.isBuyer === true) {
+                novoTrade.push({...a, time: ddmmyyy, quoteQty: arredondaQnt, roi:arredondaRetorno, isBuyer: 'Compra', price: paid})
+            } else {
+                novoTrade.push({...a, time: ddmmyyy, quoteQty: arredondaQnt, roi:arredondaRetorno, isBuyer: 'Venda', price: paid})
+            }
+        })
+
+        //console.log(novoTrade)
+        return novoTrade
+    }
+
+    formactTrades(trades)
 
     return(
         <div className={styles.container}>
+            <Head>
+                <title>Bianca</title>
+            </Head>
             <div className={styles.info}>
                 <a href='/'> <h1>Bianca</h1> </a> 
                 <p>Seja bem vindo a Bianca, minha página de consumo da API da Binance. </p>
@@ -32,14 +65,16 @@ export default function Trades({saldo, trades, price}){
             <div className={styles.tradesBTC}>
                 <h2>Aqui os Trades de BTC</h2>
                 <div className='boxTrades'>
-                    {trades.btc.map((a)=>(
+                    {novoTrade.map((a)=>(
                         <div className={styles.tradeItem} key={a.id}>
-                            
                             <p className={styles.pText}>Quando: {a.time} </p>
                             <p className={styles.pText}>Preço: {a.price}</p>
                             <p className={styles.pText}>Quantidade: {a.quoteQty}</p>
-                            <p className={styles.pText}>Preço Atual: {price.btc.price}</p>
-                            <p className={styles.pText}>Retorno : {(price.btc.price - a.price)*100/price.btc.price}</p>
+                            <p className={styles.pText}>Preço Atual: {parseFloat(price.btc.price)}</p>
+                            <p className={styles.pText}>Retorno: {`${a.roi}%`}</p>
+                            <p className={styles.pText}>Foi uma: {a.isBuyer}</p>
+                        
+
                         </div>
                         
                     ))}
