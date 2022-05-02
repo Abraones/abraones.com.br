@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Carteira from '../../components/Carteira'
 import Trades from '../../components/Trades'
 import styles from '../../styles/Bianca.module.scss'
 
@@ -8,39 +9,7 @@ export default function Bianca({saldo, trades, price, cleber}){
     //console.log(trades)
     //console.log(price.btc.price)
  
-    let novoTrade = [ ]
     
-    function formactTrades(props){
-        const trans = props.btc
-
-        trans.map((a, index, arrayBase)=>{
-
-            // Formata a Data
-            const date = a.time
-            const timeFormact = new Date(date)
-            let ddmmyyy = ((timeFormact.getDate() )) + "/" + ((timeFormact.getMonth() + 1)) + "/" + timeFormact.getFullYear(); 
-
-            //Arredonda valores
-            const qnt = parseFloat(a.quoteQty)
-            const paid = parseFloat(a.price)
-            const arredondaQnt = qnt.toFixed(2)
-
-            //Calcula Retorno
-            const retorno = ((price.btc.price - a.price)*100/price.btc.price)
-            const arredondaRetorno = retorno.toFixed(2)
-
-            if (a.isBuyer === true) {
-                novoTrade.push({...a, time: ddmmyyy, quoteQty: arredondaQnt, roi:arredondaRetorno, isBuyer: 'Compra', price: paid})
-            } else {
-                novoTrade.push({...a, time: ddmmyyy, quoteQty: arredondaQnt, roi:arredondaRetorno, isBuyer: 'Venda', price: paid})
-            }
-        })
-
-        //console.log(novoTrade)
-        return novoTrade
-    }
-
-    formactTrades(trades)
 
     return(
         <div className={styles.container}>
@@ -55,16 +24,9 @@ export default function Bianca({saldo, trades, price, cleber}){
 
             </div>
 
-            <div className={styles.carteira}>
-                <h2>Aqui aparecerão meus ativos</h2>
-                <div className={styles.ativos}>
-                    {saldo.map((a, index)=>(
-                        <p key={index}>{a.asset} : {a.free}</p>
-                    ))}
-                </div>
-            </div>
+            <Carteira saldo={saldo}></Carteira>
 
-            <Trades trades={cleber} ></Trades>
+            <Trades trades={cleber} />
 
         </div>
     )
@@ -151,10 +113,7 @@ export const getServerSideProps = async () => {
         //console.log(vitor)
         return arrayTrades
     }
-
     const cleber = await Cleber()
-    //Cleber()
-    //console.log(cleber)
 
 
     return{
