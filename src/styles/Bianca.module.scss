@@ -104,3 +104,68 @@
     }
     
 }
+
+.tabelaCarteira{
+    width: min(500px, 85vw);
+    height: fit-content;
+    background-color: rgb(236, 236, 236);
+    border-radius: 10px 10px 10px 10px ;
+}
+.cabecalho{
+    width: 100%;
+    
+    background-color: rgb(199, 199, 199);
+    border-radius: 10px 10px 2px 2px ;
+    display: flex;
+    justify-content: space-around;
+    p{
+        margin: 10px 0 10px 0;
+    }
+
+
+    
+}
+.listaAtivos{
+    display: flex;
+    flex-direction: column;
+
+}
+.ativo{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0 10px 0;
+
+    p{
+        margin: 0;
+    }
+
+}
+.saldo{
+    p{
+        margin: 0;
+    }
+    width: min(500px, 85vw);
+    height: 70px;
+    margin: 15px 0 15px 0 ;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    background-color: rgb(212, 212, 212);
+    border-radius: 10px 10px 10px 10px ;
+
+}
+.valorSaldo{
+    justify-self: initial;
+    font-size: 30px;
+    padding: 0 0 10px 0;
+}
+.moedaSaldo{
+    font-weight: 500;
+    justify-self: end;
+    padding: 0 0 10px 0;
+}
+.infoSaldo{
+    padding: 0 0 10px 0;
+    
+}

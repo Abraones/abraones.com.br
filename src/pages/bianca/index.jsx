@@ -48,6 +48,23 @@ export const getServerSideProps = async () => {
     const resPriceBTC = await client.tickerPrice('BTCBUSD')
     const priceBTC = await resPriceBTC.data
 
+    //const valorConta = saldo.map(async function(a){
+        //console.log(typeof(a))
+        // const aTrade = await client.myTrades(a)
+        // const aPrice = await client.tickerPrice(a)
+        /* const dataPrice = aPrice.data
+        const par = a
+        const dataTrade = aTrade.data
+        const augusto = {
+            par: par,
+            price: dataPrice,
+            data: dataTrade
+        }
+        return augusto */
+    //})
+    
+    //const arrayTrades = await Promise.all(allTrades);
+
     //console.log(tradesBTC)
     
 
