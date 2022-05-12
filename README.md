@@ -1,8 +1,8 @@
-# Seja bem vindo ao site do Abrones!
+# Seja bem vindo ao site do Abraones!
 
 > Este projeto está sendo desenvolvido em React e utilizando NEXT-JS hospedado pela Vercel.
  ---
-#### Disponivel em [Abraones.com.br](Abraones.com.br)
+#### Disponível em [Abraones.com.br](Abraones.com.br)
 
 ### Instalação.
 
