@@ -1,20 +1,42 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url(./fonts/Poppins/Poppins-Medium.ttf);
+ }
+
 .container{
+    box-sizing: border-box;
+    font-family: Poppins;
+    font-style: normal;
+   // font-weight: 700;
     display: flex;
+    background-color: #FAFCFF;
     flex-direction: column;
     align-items: center;
 }
 .info{
     margin: 20px 5px 5px 15px;
+    h1{
+        
+       font-weight: 700;
+    }
 }
 .carteira{
     
-    width: fit-content;
+    
+    width: min(90vw, 600px);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-items: flex-start;
+    h2{
+        margin: 0;
+        color: rgb(51, 51, 51);
+        font-size: 24px;
+    }
 }
 .ativos{
-    width: min(90vw, 650px);
+    //width: min(90vw, 650px);
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;  
@@ -68,8 +90,9 @@
     }
     .carteira{
         
-        width: fit-content;
+        width: min(90vw, 600px);
         display: flex;
+        align-self: center;
         flex-direction: column;
         align-items: center;
     }
@@ -106,7 +129,7 @@
 }
 
 .tabelaCarteira{
-    width: min(500px, 85vw);
+    width: 100%;;
     height: fit-content;
     background-color: rgb(236, 236, 236);
     border-radius: 10px 10px 10px 10px ;
@@ -143,29 +166,51 @@
 }
 .saldo{
     p{
-        margin: 0;
+        margin: 0 10px 0 10px;
     }
-    width: min(500px, 85vw);
+    width: 100%;
     height: 70px;
     margin: 15px 0 15px 0 ;
     display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    background-color: rgb(212, 212, 212);
+    justify-content: flex-start;
+    align-items: center;
+    background: rgba(184, 180, 180, 0.3);
+    border: 1px;
+    border-style: solid;
+    border-color: rgba(196, 196, 196, 0.3) ;
     border-radius: 10px 10px 10px 10px ;
+    
 
 }
 .valorSaldo{
     justify-self: initial;
     font-size: 30px;
-    padding: 0 0 10px 0;
+   
+    
 }
 .moedaSaldo{
-    font-weight: 500;
-    justify-self: end;
-    padding: 0 0 10px 0;
+    font-weight: 700;
+    font-size: 30px;
+
+   
 }
 .infoSaldo{
-    padding: 0 0 10px 0;
+    background-color: #FAFCFF;
     
+}
+
+.headbar{
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(180deg, rgba(250, 250, 250, 0) 0%, #d8d8d8 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    p{
+        margin:  0 10px 0 10px;
+    }
+}
+.setaVoltar{
+    margin: 0 10px 0 15px;
 }

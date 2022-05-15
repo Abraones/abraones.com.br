@@ -14,10 +14,11 @@ export default function Carteira(props){
     // <h2>Aqui aparecerão meus ativos</h2>
     //    <Image className={styles.iconAtivo} alt={`Icone ${saldo.asset} `} src={} width={90} height={90} />
     return(
-            <div className={styles.carteira}>
+            <div className={styles.carteira}>   
+                <h2>Meus Ativos</h2>
                 
                 <div className={styles.saldo}>
-                        <p className={styles.valorSaldo}>{saldoTotal.toFixed(2)}</p>
+                        <p className={styles.valorSaldo}>$ {saldoTotal.toFixed(2)}</p>
                         <p className={styles.moedaSaldo}>USD</p>
                         
                 </div>

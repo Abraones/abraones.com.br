@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Carteira from '../../components/Carteira'
 import Trades from '../../components/Trades'
 import styles from '../../styles/Bianca.module.scss'
+import setaEsquerda from '../../public/img/seta-pequena-esquerda.svg'
+import Image from 'next/image'
 
 export default function Bianca({saldo, trades, price, allTrades}){
 
@@ -19,15 +21,22 @@ export default function Bianca({saldo, trades, price, allTrades}){
             </Head>
 
             <div className={styles.headbar}>
-                
+                <a href={'/dev'}>
+                <div className={styles.setaVoltar}><Image  src={setaEsquerda} height={30} width={35} /></div>
+                </a>
+                <a href={'/'}><p>Abraones</p></a>
             </div>
 
 
             <div className={styles.info}>
                 <a href='/'> <h1>Bianca</h1> </a> 
-                <p>Seja bem vindo a Bianca, minha página de consumo da API da Binance. </p>
-                <p>Tá feio, mas funciona</p>
-                <p>Documentação: <a href="https://binance.github.io/binance-connector-node/index.html" >Connector Binance Node</a></p>
+                <p>Olá eu sou uma assistente de portfólio de criptomoedas. </p>
+                <p>Faço conexão com os fundos do Abraones na Exchange da Binance via API.</p>
+                <p>Rastreio em tempo real os ativos com saldo, calculo seu valor conforme a cotação atual e demonstro o total da carteira em doláres</p>
+                <p>Também estou mostrando todas as transações entre ativos e calculando o {`ROI (Retorno sobre o investimento)`}</p>
+                
+
+                <p>Documentação da API: <a href="https://binance.github.io/binance-connector-node/index.html" >Connector Binance Node</a></p>
 
             </div>
 
