@@ -3,11 +3,12 @@ import Carteira from '../../components/Carteira'
 import Trades from '../../components/Trades'
 import styles from '../../styles/Bianca.module.scss'
 
-export default function Bianca({saldo, trades, price, cleber}){
+export default function Bianca({saldo, trades, price, allTrades}){
 
     //console.log(cleber)
     //console.log(trades)
     //console.log(price.btc.price)
+    //console.log(allTrades)
  
     
 
@@ -16,6 +17,12 @@ export default function Bianca({saldo, trades, price, cleber}){
             <Head>
                 <title>Bianca</title>
             </Head>
+
+            <div className={styles.headbar}>
+                
+            </div>
+
+
             <div className={styles.info}>
                 <a href='/'> <h1>Bianca</h1> </a> 
                 <p>Seja bem vindo a Bianca, minha página de consumo da API da Binance. </p>
@@ -26,7 +33,7 @@ export default function Bianca({saldo, trades, price, cleber}){
 
             <Carteira saldo={saldo}></Carteira>
 
-            <Trades trades={cleber} />
+            <Trades trades={allTrades} />
 
         </div>
     )
@@ -40,7 +47,7 @@ export const getServerSideProps = async () => {
     // Chama os dados do Metódo account
     const response = await client.account();
     // Captura todos as cryptos da conta
-    const allCoins = await response.data.balances
+    const myBalance = await response.data.balances
     // Captura Trades de BTC com BUSD
     const resBTC = await client.myTrades('BTCBUSD')
     const tradesBTC = await resBTC.data
@@ -48,44 +55,37 @@ export const getServerSideProps = async () => {
     const resPriceBTC = await client.tickerPrice('BTCBUSD')
     const priceBTC = await resPriceBTC.data
 
-    //const valorConta = saldo.map(async function(a){
-        //console.log(typeof(a))
-        // const aTrade = await client.myTrades(a)
-        // const aPrice = await client.tickerPrice(a)
-        /* const dataPrice = aPrice.data
-        const par = a
-        const dataTrade = aTrade.data
-        const augusto = {
-            par: par,
-            price: dataPrice,
-            data: dataTrade
-        }
-        return augusto */
-    //})
     
     //const arrayTrades = await Promise.all(allTrades);
-
+    
     //console.log(tradesBTC)
     
-
+    
     function comSaldo(props){
+        
         let comSaldo = [];
         props.map((props)=>{
             if(props.free > 0){
                 comSaldo.push(props)
             }
         })
+        
+        
         return comSaldo
     }
-    const saldo = comSaldo(allCoins)
+    const saldo = comSaldo(myBalance)
 
-    function withTrade(props){
+    //console.log(saldo)
+
+
+    function withTrade(){
         let parTrade = [];
 
         saldo.map((props)=>{
             //console.log(a.asset)
             if (props.asset !== 'BUSD' &&  props.asset !== 'BRL'){
             const par = (props.asset + 'BUSD')
+            
             //console.log(par)
             parTrade.push(par)
             }
@@ -93,52 +93,105 @@ export const getServerSideProps = async () => {
         return parTrade
     }
 
-    const pares = withTrade(saldo)
-    //console.log(pares)
+    const pares = withTrade()
+ 
+    ////// my test
 
-    /* async function allTrades(props){
-        let seila = {}
+    function saldoModificado(props){
+       // console.log(props)
+        let saldinho = []
         props.map((a)=>{
-            let atualTrade = await client.myTrades(a)
-            console.log(atualTrade)
-        })
-
-    }
-    allTrades(pares) */
-    //const allTrades = await client.myTrades()
-    
-    async function Cleber(){
-        let cleber = []
-        const allTrades = pares.map(async function(a){
-            //console.log(typeof(a))
-            const aTrade = await client.myTrades(a)
-            const aPrice = await client.tickerPrice(a)
-            const dataPrice = aPrice.data
-            const par = a
-            const dataTrade = aTrade.data
-            const augusto = {
-                par: par,
-                price: dataPrice,
-                data: dataTrade
+            //console.log(a)
+            const joana =  (a.asset + 'BUSD') 
+            if (a.asset !== 'BUSD' &&  a.asset !== 'BRL'){
+                
+                saldinho.push({...a, par : joana })   
+              
+               
+            }else {
+                saldinho.push({...a, par : a.asset })     
             }
-            return augusto
+           // console.log(a.par)        
         })
-        
-        const arrayTrades = await Promise.all(allTrades);
-
-        //cleber.push(allTrades)
-        //console.log(vitor)
-        return arrayTrades
+       //console.log(saldinho)
+        return saldinho
     }
-    const cleber = await Cleber()
+
+    const saldao = saldoModificado(saldo)
+    //console.log(saldao)
+
+    ////// my test
+
+    
+    //console.log(aDolarPrice)
+
+
+
+
+    const takeAllPrices = saldao.map(async function(a){
+        switch(a.par){
+            case 'BRL':
+                const dolarprice = await client.tickerPrice('BUSDBRL')
+                const seilas = parseFloat(dolarprice.data.price)
+                a.value = ( parseFloat(a.free) / parseFloat(dolarprice.data.price)).toFixed(2)
+                a.price = seilas.toFixed(2)
+                break
+            case 'BUSD':
+                const dolar = 1
+                a.price = dolar.toFixed(2)
+                a.value = parseFloat(a.free).toFixed(2)
+                break
+            default:
+                const precoIndividual = await client.tickerPrice(a.par)
+                const precoIndividualData = precoIndividual.data
+                const numberPrice = parseFloat(precoIndividualData.price)
+                const numberQnt = parseFloat(a.free)
+                const valueAsset = (numberPrice * numberQnt)
+
+                const tradesAsset = await client.myTrades(a.par)
+                const dataTradeAsset = tradesAsset.data
+
+                a.trades = dataTradeAsset
+                a.value = valueAsset.toFixed(2)
+                a.price = numberPrice.toFixed(2)
+                break
+
+        }
+ 
+        return {...a} 
+    })
+    const saldoComPreco = await Promise.all(takeAllPrices)
+    console.log(saldoComPreco)
+
+
+
+    const allParTrades = pares.map(async function(a){
+          
+        const par = a
+        const aTrade = await client.myTrades(a)
+        const aPrice = await client.tickerPrice(a)
+        const dataPrice = aPrice.data
+        const dataTrade = aTrade.data
+        const infosTrade = {
+            par: par,
+            price: dataPrice,
+            data: dataTrade
+        }
+        return infosTrade
+    })
+    
+    const arrayAllTrades = await Promise.all(allParTrades);
+
+
+
 
 
     return{
         props:{
-            saldo, 
+            saldo : saldoComPreco, 
             trades:{btc: tradesBTC},
             price:{btc: priceBTC},
-            cleber
+            allTrades : arrayAllTrades
         }
     }
 }

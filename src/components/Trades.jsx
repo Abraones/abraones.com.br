@@ -7,7 +7,7 @@ export default function Trades(props){
 
     let novoTrade = []
     const arrayArray = []
-    console.log(props.trades)
+    //console.log(props.trades)
     let allTradesFomacted = []
 
     
