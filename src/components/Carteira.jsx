@@ -23,7 +23,7 @@ export default function Carteira(props){
                         
                 </div>
 
-                <div className={styles.tabelaCarteira} >
+               {/*  <div className={styles.tabelaCarteira} >
                     <div className={styles.cabecalho} >
                         <p>crypto</p> <p>preço</p> <p>quantidade</p>
                     </div>
@@ -41,6 +41,27 @@ export default function Carteira(props){
                         </div>                        
                     ))}
                     </div>
+                </div> */}
+
+                <div className={styles.tabelaCarteira} >
+                    <div className={styles.gridCabecalho}>
+                        <div className={styles.nome}>crypto</div>
+                        <div className={styles.preco}>preço</div> 
+                        <div className={styles.qnt}><p>quantidade</p></div>
+                    </div>
+            
+                     {saldo.map((a, index)=>(
+                        <div className={styles.gridAtivo}>
+                           
+                            <div className={styles.nome} >{a.asset}</div>
+                            <div className={styles.preco}>{a.price}</div>
+                            <div className={styles.qnt}>
+                                <p>$ {a.value}</p>
+                                <p>{a.free}</p>                     
+                            </div>
+                        </div>                        
+                    ))} 
+                
                 </div>
 
                 

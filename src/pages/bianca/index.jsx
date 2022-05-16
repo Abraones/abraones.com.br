@@ -29,20 +29,20 @@ export default function Bianca({saldo, trades, price, allTrades}){
 
 
             <div className={styles.info}>
-                <a href='/'> <h1>Bianca</h1> </a> 
-                <p>Olá eu sou uma assistente de portfólio de criptomoedas. </p>
+                <a href='/bianca'> <h1>Bianca</h1> </a> 
+                <p>Olá, eu sou uma assistente de portfólio de criptomoedas. </p>
                 <p>Faço conexão com os fundos do Abraones na Exchange da Binance via API.</p>
-                <p>Rastreio em tempo real os ativos com saldo, calculo seu valor conforme a cotação atual e demonstro o total da carteira em doláres</p>
+                <p>Documentação da API: <a href="https://binance.github.io/binance-connector-node/index.html" >Connector Binance Node</a></p>
+                <p>Rastreio em tempo real os ativos com saldo, calculo seu valor conforme a cotação atual e demonstro o total da carteira em dólares</p>
+                <Carteira saldo={saldo}></Carteira> 
                 <p>Também estou mostrando todas as transações entre ativos e calculando o {`ROI (Retorno sobre o investimento)`}</p>
                 
 
-                <p>Documentação da API: <a href="https://binance.github.io/binance-connector-node/index.html" >Connector Binance Node</a></p>
 
+                <Trades trades={allTrades} />
             </div>
 
-            <Carteira saldo={saldo}></Carteira>
 
-            <Trades trades={allTrades} />
 
         </div>
     )

@@ -4,6 +4,7 @@
  }
 
 .container{
+    width: 100vw;
     box-sizing: border-box;
     font-family: Poppins;
     font-style: normal;
@@ -15,6 +16,12 @@
 }
 .info{
     margin: 20px 5px 5px 15px;
+    width: min(90vw, 600px);
+    p{
+        text-align: justify;
+        font-size: 18px;
+        width: 100%;
+    }
     h1{
         
        font-weight: 700;
@@ -45,7 +52,7 @@
     }
 }
 .tradesBTC{
-    width: fit-content;
+   // width: fit-content;
     display: flex;
     flex-direction: column;
     
@@ -83,7 +90,7 @@
     .container{
         display: flex;
         flex-direction: column;
-        align-items: initial;
+        align-items: center;
     }
     .info{
         margin: 20px 5px 5px 15px;
@@ -200,7 +207,7 @@
 }
 
 .headbar{
-    width: 100%;
+    width: 100vw;
     height: 60px;
     background: linear-gradient(180deg, rgba(250, 250, 250, 0) 0%, #d8d8d8 100%);
     display: flex;
@@ -213,4 +220,50 @@
 }
 .setaVoltar{
     margin: 0 10px 0 15px;
+}
+.gridCabecalho{
+    width: 100%;
+    height: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    font-weight: 700;
+    background-color: rgb(199, 199, 199);
+    border-radius: 10px 10px 2px 2px ;
+   
+}
+.gridAtivo{
+
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    border: 1px solid rgb(205, 205, 205);
+
+}
+.nome{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  
+}
+.preco{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 18px;
+}
+.qnt{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+
+    
+    
+    p{
+        margin: 0 5px 0 0 ;
+        width: fit-content;
+        
+    }
 }
