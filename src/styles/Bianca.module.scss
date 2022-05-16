@@ -1,20 +1,49 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url(./fonts/Poppins/Poppins-Medium.ttf);
+ }
+
 .container{
+    width: 100vw;
+    box-sizing: border-box;
+    font-family: Poppins;
+    font-style: normal;
+   // font-weight: 700;
     display: flex;
+    background-color: #FAFCFF;
     flex-direction: column;
     align-items: center;
 }
 .info{
     margin: 20px 5px 5px 15px;
+    width: min(90vw, 600px);
+    p{
+        text-align: justify;
+        font-size: 18px;
+        width: 100%;
+    }
+    h1{
+        
+       font-weight: 700;
+    }
 }
 .carteira{
     
-    width: fit-content;
+    
+    width: min(90vw, 600px);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    justify-items: flex-start;
+    h2{
+        margin: 0;
+        color: rgb(51, 51, 51);
+        font-size: 24px;
+    }
 }
 .ativos{
-    width: min(90vw, 650px);
+    //width: min(90vw, 650px);
+    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;  
@@ -23,7 +52,7 @@
     }
 }
 .tradesBTC{
-    width: fit-content;
+   // width: fit-content;
     display: flex;
     flex-direction: column;
     
@@ -61,15 +90,16 @@
     .container{
         display: flex;
         flex-direction: column;
-        align-items: initial;
+        align-items: center;
     }
     .info{
         margin: 20px 5px 5px 15px;
     }
     .carteira{
         
-        width: fit-content;
+        width: min(90vw, 600px);
         display: flex;
+        align-self: center;
         flex-direction: column;
         align-items: center;
     }
@@ -103,4 +133,137 @@
         
     }
     
+}
+
+.tabelaCarteira{
+    width: 100%;;
+    height: fit-content;
+    background-color: rgb(236, 236, 236);
+    border-radius: 10px 10px 10px 10px ;
+}
+.cabecalho{
+    width: 100%;
+    
+    background-color: rgb(199, 199, 199);
+    border-radius: 10px 10px 2px 2px ;
+    display: flex;
+    justify-content: space-around;
+    p{
+        margin: 10px 0 10px 0;
+    }
+
+
+    
+}
+.listaAtivos{
+    display: flex;
+    flex-direction: column;
+
+}
+.ativo{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0 10px 0;
+
+    p{
+        margin: 0;
+    }
+
+}
+.saldo{
+    p{
+        margin: 0 10px 0 10px;
+    }
+    width: 100%;
+    height: 70px;
+    margin: 15px 0 15px 0 ;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: rgba(184, 180, 180, 0.3);
+    border: 1px;
+    border-style: solid;
+    border-color: rgba(196, 196, 196, 0.3) ;
+    border-radius: 10px 10px 10px 10px ;
+    
+
+}
+.valorSaldo{
+    justify-self: initial;
+    font-size: 30px;
+   
+    
+}
+.moedaSaldo{
+    font-weight: 700;
+    font-size: 30px;
+
+   
+}
+.infoSaldo{
+    background-color: #FAFCFF;
+    
+}
+
+.headbar{
+    width: 100vw;
+    height: 60px;
+    background: linear-gradient(180deg, rgba(250, 250, 250, 0) 0%, #d8d8d8 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    p{
+        margin:  0 10px 0 10px;
+    }
+}
+.setaVoltar{
+    margin: 0 10px 0 15px;
+}
+.gridCabecalho{
+    width: 100%;
+    height: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    font-weight: 700;
+    background-color: rgb(199, 199, 199);
+    border-radius: 10px 10px 2px 2px ;
+   
+}
+.gridAtivo{
+
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    border: 1px solid rgb(205, 205, 205);
+
+}
+.nome{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  
+}
+.preco{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 18px;
+}
+.qnt{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+
+    
+    
+    p{
+        margin: 0 5px 0 0 ;
+        width: fit-content;
+        
+    }
 }
